@@ -1,17 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import "./index.css"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const lakesList = [
+{id: "1", name: "Lake 1", description: "Lake 1 desc"},
+{id: "2", name: "Lake 2", description: "Lake 2 desc"},
+{id: "3", name: "Lake 3", description: "Lake 3 desc"}
+];
+function App({lakes}) {
+  return (
+    <ul>
+      {lakes.map((lake, i) => (
+        <li key={i}>{lake.id} - {lake.name} - {lake.description}</li>
+      ))}
+    </ul>
+  );
+}
+
+ReactDOM.render(
+  <App lakes={lakesList}/>,
+  document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
